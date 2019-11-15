@@ -1,8 +1,11 @@
 # System info
 
+
 ### Linux release
 Các thông tin phát hành của kinux được lưu trong thư mục `/etc/`, để xem các thông tin phát hành ta sử dụng lệnh:
+
 `cat /etc/*release`
+
 Kết quả:
 ```
 $ cat /etc/*release
@@ -26,6 +29,7 @@ REDHAT_SUPPORT_PRODUCT_VERSION="7"
 CentOS Linux release 7.7.1908 (Core)
 CentOS Linux release 7.7.1908 (Core)
 ```
+
 ### Kernel info
 Một số option của lệnh `uname` cho ta các thông tin về kernel:
  - `uname -s, --kernel-name` print the kernel name
