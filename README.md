@@ -1,3 +1,3 @@
 # ThucTap-NhanHoa
 
-1. [LINUX](../../LINUXs/README.md)
+1. [LINUX](./LINUXs/README.md)
