@@ -226,13 +226,16 @@ Ngoài ra:
 Để giải nén sử dụng ký tự đại diện ta dùng lện:
 
 `# tar -xz foo.tar.gz -wildcards [wildcard]s`
+
 Ví dụ: `# tar -xz foo.tar.gz -wildcards *.txt`
 
 ### Liệt kê nội dung của một file nén
 Để liệt kê nội dung một file nén ta sử dụng lệnh:
 
 `# tar -zt foo.tar.gz`
+
 `-t` or `--list` :(
+
 Ngoài ra ta có thể kết hợp với `-v, Verbose` hoặc `grep` để tìm kiếm hiệu quả hơn
 
 ### Tạo một archive
