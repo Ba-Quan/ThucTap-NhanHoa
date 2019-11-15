@@ -176,7 +176,7 @@ Please see the rsync(1) and rsyncd.conf(5) man pages for full documentation.
 See http://rsync.samba.org/ for updates, bug reports, and answers
 ```
 
-Một sô option:
+Một số option:
 
 - `-z, --compress` nén file khi truyền
 - `-r, --recursive` đệ quy
@@ -206,8 +206,11 @@ Lệnh `tar` cho phép giải nén hay trích xuất dữ liệu từ một file
 Trong đó:
 
 `x` - Giải nén file
+
 `v` - Verbose,  in tên tệp khi chúng được trích xuất, từng file một
+
 `z` or `--gzip, --gunzip, --ungzip` - laọc lưu trữ thông qu gzip
+
 `f` - Sử dụng file sau cho việc giải nén
 
 Ngoài ra:
