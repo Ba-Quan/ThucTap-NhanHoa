@@ -1,3 +1,3 @@
 # ThucTap-NhanHoa
 
-1. [LINUX]
+1. [LINUX](../LINUXs/)
