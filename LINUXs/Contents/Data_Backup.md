@@ -223,7 +223,7 @@ Ngoài ra:
 `# tar -xz foo.tar.gz file[s]`
 
 ### Giải nén khớp với wildcards (kí tự đại diện)
-Để giải nén sử dụng ký tự đại diện ta dùng lện:
+Để giải nén sử dụng ký tự đại diện ta dùng lệnh:
 
 `# tar -xz foo.tar.gz -wildcards [wildcard]s`
 
