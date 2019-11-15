@@ -190,8 +190,7 @@ Nén dữ liệu là một trong những phương pháp làm giảm dung lượn
 |--------|-----|
 |gzip|Tiện ích nén được sử dụng phổ biến nhất trên linux|
 |bzip2|Nén thành các tệp có dung lương nhỏ hơn đáng kể so với gzip|
-|zip|Tiện ích nén hiệu quả nhất về không gian được sử dụng trong linux, Nó hiện được [kernel.org](https://www.kernel.org/) sử dụng để lưu trữ tài liệu lưu trữ của nhân Linux.
-|
+|zip|Tiện ích nén hiệu quả nhất về không gian được sử dụng trong linux, Nó hiện được [kernel.org](https://www.kernel.org/) sử dụng để lưu trữ tài liệu lưu trữ của nhân Linux.|
 |xz|Thường được yêu cầu kiểm tra và giải nén tài liệu lưu trữ từ các hệ điều hành khác|
 
 Các tiện ích nén trên khác nhau về hiểu quả của việc nén dữ liệu và thời gian nén dữ liệu, các kỹ thuật nén hiệu quả hơn thường mất nhiều thời gian hơn và ngược lại. Thời gian giải nén không thay đổi qua các phương pháp khác nhau.
