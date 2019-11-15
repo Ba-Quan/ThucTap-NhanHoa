@@ -200,26 +200,32 @@ Lệnh `tar` cho phép giải nén hay trích xuất dữ liệu từ một file
 
 ### Extract a tar.gz archive
 Để giải nén một file tar.gz ta sử dụng lệnh:
+
 `# tar -xzvf for.tar.gz`
+
 Trong đó:
 `x` - Giải nén file
 `v` - Verbose,  in tên tệp khi chúng được trích xuất, từng file một
 `z` or `--gzip, --gunzip, --ungzip` - laọc lưu trữ thông qu gzip
 `f` - Sử dụng file sau cho việc giải nén
+
 Ngoài ra:
 `-C` - Giải nén vào một đường dẫn hoặc một thư mục cụ thể
 
 ### Giải nén một hoặc nhiều file
 Để giải nén một hoặc nhiều file trong một file nén ta sử dụng lệnh:
+
 `# tar -xz foo.tar.gz file[s]`
 
 ### Giải nén khớp với wildcards (kí tự đại diện)
 Để giải nén sử dụng ký tự đại diện ta dùng lện:
+
 `# tar -xz foo.tar.gz -wildcards [wildcard]s`
 Ví dụ: `# tar -xz foo.tar.gz -wildcards *.txt`
 
 ### Liệt kê nội dung của một file nén
 Để liệt kê nội dung một file nén ta sử dụng lệnh:
+
 `# tar -zt foo.tar.gz`
 `-t` or `--list` :(
 Ngoài ra ta có thể kết hợp với `-v, Verbose` hoặc `grep` để tìm kiếm hiệu quả hơn
