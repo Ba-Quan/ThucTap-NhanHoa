@@ -276,14 +276,17 @@ Ví dụ:
 
 ### Backup một partition (Phân vùng)
 Để backup một phân vùng ta sử dụng lệnh:
+
 `# dd if=/dev/hda1 of=~/partition.img` lệnh này sẽ copy toàn bộ phân vùng `sda1` và lưu vào `partition.img`
 
 ### Tạo một image của một đĩa cứng
 Đôi khi ta cần tạo một image của một đĩa cứng và lưu trữ nó ở đâu đó nhằm sử dụng mỗi khi gặp một sự cố bất ngờ nào đó, để làm điều đó ta sử dụng lệnh:
+
 `# dd if = /dev/hda of = ~/hdadisk.img`
 
 ### Tạo một file iso backup từ một CDROM
 Để tạo một file iso từ một CDROM được gắn ta sử dụng lệnh sau:
+
 `# dd if=/dev/cdrom of=cdrom.iso bs=2048`
 
 Trong đó `bs` (block size) chỉ định kích thước khối.
