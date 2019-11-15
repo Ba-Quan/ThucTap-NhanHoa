@@ -268,6 +268,7 @@ Cú pháp của `dd` khác với các chương trình linux khác, nó sử dụ
 Trong đó:
 
 `if` - input file (là ổ sda)
+
 `of` - output file (là ổ sdb)
 
 Lệnh trên sẽ thất bại khi có lỗi, có một option giúp chuyển đổi dữ liệu mà `dd` hỗ trợ là `conv` (convert) với một số giá trị sau:
