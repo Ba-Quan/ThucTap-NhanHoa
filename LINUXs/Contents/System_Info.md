@@ -74,11 +74,19 @@ tmpfs                                   tmpfs      98M     0   98M   0% /run/use
 ```
 ### More info from `/proc`
 Một số thông tin về hệ thống có thể tìm thấy tại thư mục `/proc`, đây là thư mục chứa các file ảo chứa các thông tin về hệ thống trong thời gian chạy (runtime), ta có thể đọc các file ở đây để có được các thông tin về hệ thống:
+
 `/proc/cpuinfo` Thông tin về cpu
+
 `/proc/interrupts` __
+
 `/proc/meminfo` Thông tin về bộ nhớ
+
 `/proc/mounts`
+
 `/proc/partitions` Thông tin về các phân vùng trên hệ thống
+
 `/proc/version` Thông tin về phiên bản hệ thống
+
 `/proc/<process-id-#>` Thông tin về các tiến trình được đánh theo `PID`
+
 `/proc/sys`
