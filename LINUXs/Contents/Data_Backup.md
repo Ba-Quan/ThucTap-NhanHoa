@@ -204,12 +204,14 @@ Lệnh `tar` cho phép giải nén hay trích xuất dữ liệu từ một file
 `# tar -xzvf for.tar.gz`
 
 Trong đó:
+
 `x` - Giải nén file
 `v` - Verbose,  in tên tệp khi chúng được trích xuất, từng file một
 `z` or `--gzip, --gunzip, --ungzip` - laọc lưu trữ thông qu gzip
 `f` - Sử dụng file sau cho việc giải nén
 
 Ngoài ra:
+
 `-C` - Giải nén vào một đường dẫn hoặc một thư mục cụ thể
 
 ### Giải nén một hoặc nhiều file
@@ -254,9 +256,11 @@ Cú pháp của `dd` khác với các chương trình linux khác, nó sử dụ
 
 ### Backup toàn bộ đĩa cứng
 Để backup toàn bộ đĩa cứng sang một đĩa cứng khác được gắn trên cùng một hệ thống ta sử dụng lệnh:
+
 `# dd if=/dev/sda of=/dev/sdb`
 
 Trong đó:
+
 `if` - input file (là ổ sda)
 `of` - output file (là ổ sdb)
 
