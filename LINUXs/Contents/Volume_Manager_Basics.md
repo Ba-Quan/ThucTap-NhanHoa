@@ -637,4 +637,33 @@ tmpfs                                   tmpfs     102M     0  102M   0% /run/use
 
 ```
 
+[root@CentOS-7-1908 ~]# e2fsck /dev/VG0/Datas
+e2fsck 1.42.9 (28-Dec-2013)
+/dev/VG0/Datas: clean, 11/983040 files, 104724/3932160 blocks
+[root@CentOS-7-1908 ~]# e2fsck -f /dev/VG0/Datas
+e2fsck 1.42.9 (28-Dec-2013)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+/dev/VG0/Datas: 11/983040 files (0.0% non-contiguous), 104724/3932160 blocks
+[root@CentOS-7-1908 ~]# resize2fs /dev/VG0/Datas
+resize2fs 1.42.9 (28-Dec-2013)
+Resizing the filesystem on /dev/VG0/Datas to 5240832 (4k) blocks.
+The filesystem on /dev/VG0/Datas is now 5240832 blocks long.
+
+[root@CentOS-7-1908 ~]# mount /dev/VG0/Datas /Datas/
+[root@CentOS-7-1908 ~]# df -HT
+Filesystem                              Type      Size  Used Avail Use% Mounted on
+devtmpfs                                devtmpfs  498M     0  498M   0% /dev
+tmpfs                                   tmpfs     510M     0  510M   0% /dev/shm
+tmpfs                                   tmpfs     510M  8.0M  502M   2% /run
+tmpfs                                   tmpfs     510M     0  510M   0% /sys/fs/cgroup
+/dev/mapper/centos_centos--7--1908-root xfs        51G  1.4G   50G   3% /
+/dev/sda1                               xfs       1.1G  143M  921M  14% /boot
+tmpfs                                   tmpfs     102M     0  102M   0% /run/user/0
+/dev/mapper/VG0-Backups                 ext4       11G   38M  9.9G   1% /Backups
+/dev/mapper/VG0-Datas                   ext4       21G   47M   20G   1% /Datas
+[root@CentOS-7-1908 ~]#
 ```
