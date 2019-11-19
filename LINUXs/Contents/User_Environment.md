@@ -122,6 +122,7 @@ Một số biến môi trường lưu trữ các thông tin về lịch sử l�
 
 
 Một số cú pháp lệnh được sử dụng để gọi lại lệnh đã dùng trước đó:
+
 |Commands|Comments|
 |--------|--------|
 |!!|Thực thi lệnh trước đó|
