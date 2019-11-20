@@ -594,7 +594,6 @@ Vì ta loại bỏ sdd nên tổng kích thước còn lại sẽ bằng tổng 
 
 
 Thu nhỏ LV-DB:
-EDIT
 ```
 [root@CentOS-7-1908 ~]# pvdisplay
   --- Physical volume ---
