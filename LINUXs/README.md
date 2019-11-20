@@ -12,3 +12,4 @@
 9. [User Environment](../LINUXs/Contents/User_Environment.md)
 10. [Processes](../LINUXs/Contents/Processes.md)
 11. [Volume Manager Basic (LVM)](../LINUXs/Contents/Volume_Manager_Basics.md)
+12. [Advanced Volume Manager Basic (LVM-LAB)](../LINUXs/Contents/Advanced_Volume_Manager.md)
