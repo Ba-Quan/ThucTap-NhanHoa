@@ -197,7 +197,13 @@ Replaced:
   mariadb-libs.x86_64 1:5.5.64-1.el7
 
 Complete!
+[root@CentOS-7-1908 DB]# vi /etc/my.cnf
+[mysqld]
+...
+datadir=/DB/MySql/
+...
 [root@CentOS-7-1908 DB]#
+
 
 
 [root@CentOS-7-1908 DB]# systemctl start mysql
