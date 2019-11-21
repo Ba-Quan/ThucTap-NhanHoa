@@ -1,6 +1,6 @@
 # LINUX
 
-0. [SSH-KEYs](../LINUXs/Contents/SSH-Key.md)
+0. [SSH-KEYs](../LINUXs/Contents/SSH_Key.md)
 1. [Basic commands](../LINUXs/Contents/Basic_Commands.md)
 2. [Working with files](../LINUXs/Contents/Working_With_Files.md)
 3. [File system](../LINUXs/Contents/File_System.md)
