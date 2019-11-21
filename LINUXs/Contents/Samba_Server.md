@@ -29,7 +29,7 @@ Dịch vụ winbindd sẽ giải quyết thông tin người dùng tới từ nh
 ### Mô hình lab
 Mô hình lab như dưới đây, ta sẽ cài đặt và cấu hình samba trên máy CentOS để có thể chia sẽ file, sau đó truy cập file từ máy window.
 
-<img src="../LINUXs/Images/Samba_Lab.png">
+<img src="./LINUXs/Images/Samba_Lab.png">
 
 
 ### IP-Planning
@@ -225,8 +225,8 @@ Share
 
 Bây giờ ta truy cập vào máy Window để kiểm tra xem có truy cập được file chia sẻ không, ta ẩn ttor hợp `Ctrl`+`R` để mở hộp thoại Run và truy cập vào địa chỉ IP của samba server như dưới đây:
 
-<img src="../LINUXs/Images/Run.png">
+<img src="./LINUXs/Images/Run.png">
 
-<img src="../LINUXs/Images/Login.png">
+<img src="./LINUXs/Images/Login.png">
 
-<img src="../LINUXs/Images/Acceessed.png">
+<img src="./LINUXs/Images/Acceessed.png">
