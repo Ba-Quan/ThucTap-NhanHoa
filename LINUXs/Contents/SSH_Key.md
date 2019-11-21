@@ -19,7 +19,7 @@ SSH-Key là một phương thức xác thực khi ta sử dụng giao thức SSH
 Ta sẽ có một mô hình lab gồm 2 máy Centos như hình sau:
 
 
-<img src="https://github.com/Vy5blkk/Linux/blob/master/Images/SSH-KEY.png">
+<img src="../Images/SSH-KEY.png">
 
 
 Và ta sẽ thực hiện triển khai để máy `centos-7_1` có thể kết nối ssh tới máy `centos-7_2`
@@ -28,7 +28,7 @@ Và ta sẽ thực hiện triển khai để máy `centos-7_1` có thể kết n
 
 <a name="ip-planning"></a>
 # Ip-planning
-<img src="https://github.com/Vy5blkk/Linux/blob/master/Images/ip-planning.png">
+<img src="../Images/ip-planning.png">
 
 <a name="create-sshkey"></a>
 # Tạo SSH-Key
