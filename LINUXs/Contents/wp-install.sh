@@ -38,6 +38,10 @@ install_apache(){
     apt-get install -y apache2
     systemctl enable apache2
     systemctl start apache2
+    
+    ufw allow http
+    ufw allow https
+    ufw reload
 }
 
 # Create virtual host for wordpress site
