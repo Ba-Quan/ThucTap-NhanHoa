@@ -87,6 +87,7 @@ config_wordpress(){
         mkdir $install_path
     fi
     mv wordpress/* $install_path
+    chown -R www-data:www-data $install_path
 }
 
 # install wordpress
