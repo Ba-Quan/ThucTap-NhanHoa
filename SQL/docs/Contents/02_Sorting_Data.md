@@ -5,13 +5,14 @@
 ## ORDER BY
 
 ### Chức năng
+
 Dùng để sắp xếp các dữ liệu được trả về từ truy vấn `SELECT`.
 
 
 
 ### Cú pháp
 
-```
+```SQL
 SELECT 
    select_list
 FROM 
@@ -31,7 +32,7 @@ ORDER BY
 
 Sắp xếp theo một cột:
 
-```
+```SQL
 SELECT
     contactLastname,
     contactFirstname
@@ -43,7 +44,7 @@ ORDER BY
 
 Sắp xếp theo một biểu thức:
 
-```
+```SQL
 SELECT 
     orderNumber, 
     orderlinenumber, 
@@ -56,7 +57,7 @@ ORDER BY
 
 Sắp xếp theo một danh sách tùy chỉnh:
 
-```
+```SQL
 SELECT 
     orderNumber, 
     status
@@ -75,5 +76,6 @@ ORDER BY
 
 
 ### Chú ý
+
 - Luôn được sử dụng sau `FROM` và `SELECT`
 - Mặc định nếu không chỉ rõ sẽ được sắp xếp theo `ASC`

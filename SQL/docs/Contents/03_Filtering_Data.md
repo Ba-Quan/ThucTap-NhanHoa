@@ -5,13 +5,14 @@
 ## WHERE
 
 ### Chức năng
+
 Dùng để chỉ định điều kiện tìm kiếm cho các dữ liệu được trả về bởi một câu truy vấn.
 
 
 
 ### Cú pháp
 
-```
+```SQL
 SELECT 
     select_list
 FROM
@@ -26,9 +27,10 @@ WHERE
 
 
 ### Ví dụ
+
 Với toán tử `AND`:
 
-```
+```SQL
 SELECT 
     lastname, 
     firstname, 
@@ -43,7 +45,7 @@ WHERE
 
 Với toán tử `OR`:
 
-```
+```SQL
 SELECT 
     lastName, 
     firstName, 
@@ -61,7 +63,7 @@ ORDER BY
 
 Với toán tử `BETWEEN`:
 
-```
+```SQL
 SELECT 
     firstName, 
     lastName, 
@@ -75,7 +77,7 @@ ORDER BY officeCode;
 
 Với toán tử `LIKE`:
 
-```
+```SQL
 SELECT 
     firstName, 
     lastName
@@ -85,13 +87,14 @@ WHERE
     lastName LIKE '%son'
 ORDER BY firstName;
 ```
+
 - `%` đại diện cho 0 hoặc nhiều ký tự
 - `_` đại diện cho một ký tự đơn
 
 
 Với toán tử `IN`
 
-```
+```SQL
 SELECT 
     firstName, 
     lastName, 
@@ -106,7 +109,7 @@ ORDER BY
 
 Với toán tử `NOT IN`
 
-```
+```SQL
 SELECT 
     firstName, 
     lastName, 
@@ -121,7 +124,7 @@ ORDER BY
 
 Với toán tử `IS NULL`
 
-```
+```SQL
 SELECT 
     lastName, 
     firstName, 
@@ -134,7 +137,7 @@ WHERE
 
 Với các toán tử so sánh:
 
-```
+```SQL
 SELECT 
     lastname, 
     firstname, 
@@ -145,7 +148,7 @@ WHERE
     jobtitle = 'Sales Rep';
 ```
 
-```
+```SQL
 SELECT 
     lastname, 
     firstname, 
@@ -165,7 +168,7 @@ WHERE
     jobtitle != 'Sales Rep';
 ```
 
-```
+```SQL
 SELECT 
     lastname, 
     firstname, 
@@ -176,7 +179,7 @@ WHERE
     officecode > 5;
 ```
 
-```
+```SQL
 SELECT 
     lastname, 
     firstname, 
@@ -187,7 +190,7 @@ WHERE
     officecode >= 5;
 ```
 
-```
+```SQL
 SELECT 
     lastname, 
     firstname, 
@@ -198,7 +201,7 @@ WHERE
     officecode < 4;
 ```
 
-```
+```SQL
 SELECT 
     lastname, 
     firstname, 
@@ -212,6 +215,7 @@ WHERE
 
 
 ### Chú ý
+
 - Ngoài `SELECT`, `WHERE` còn được sử dụng trong các câu lệnh `UPDATE` hoặc `DELETE`
 
 
@@ -220,13 +224,14 @@ WHERE
 ## DISTINCT
 
 ### Chức năng
+
 Dùng để loại bỏ các hàng trùng lặp trong tập kết quả.
 
 
 
 ### Cú pháp
 
-```
+```SQL
 SELECT DISTINCT
     select_list
 FROM
@@ -237,7 +242,7 @@ FROM
 
 ### Ví dụ:
 
-```
+```SQL
 SELECT 
     DISTINCT lastname
 FROM
@@ -248,7 +253,7 @@ ORDER BY
 
 Với hàm tổng hợp:
 
-```
+```SQL
 SELECT 
     COUNT(DISTINCT state)
 FROM
@@ -259,7 +264,7 @@ WHERE
 
 Với `LIMIT`:
 
-```
+```SQL
 SELECT DISTINCT
     state
 FROM
@@ -272,6 +277,7 @@ LIMIT 5;
 
 
 ### Chú ý
+
 - Nếu trong cột có các giá trị `NULL` thì sẽ vẫn còn lại một giá trị `NULL`
 - Có thể sử dụng khi ``SELECT` nhiều cột
 - `DISTINCT` hoạt động giống như sử dụng `GROUP BY` mà không có các hàm tổng hợp dữ liệu.
@@ -284,12 +290,13 @@ LIMIT 5;
 ## AND
 
 ### Chức năng
+
 Là toán tử logic kết hợp hai biểu thức `boolean` lại và trả về `TRUE` chỉ khi cả hai biểu thức đều là `TRUE`
 
 
 ### Cú pháp
 
-```
+```SQL
 boolean_expression_1 AND boolean_expression_2
 ```
 
@@ -306,7 +313,7 @@ Bảng dưới đây minh họa kết quả của sự kết hợp:
 
 ### Ví dụ:
 
-```
+```SQL
 SELECT 
     customername, 
     country, 
@@ -318,6 +325,7 @@ WHERE
 ```
 
 ### Chú ý
+
 - Sử dụng trong mệnh để `WHERE` của các câu truy vấn `SELECT`, `UPDATE`, `DELETE`
 - Có thể sử dụng kết hợp nhiều toán tử `AND`
 - Trong MySQL `0` được coi là `FALSE` và số 1 được coi là `TRUE`
@@ -329,12 +337,13 @@ WHERE
 ## OR
 
 ### Chức năng
+
 Toán tử `OR` kết hợp hai biểu thức `Boolean` và trả về `TRUE` khi một trong hai điều kiện là đúng.
 
 
 ### Cú pháp
 
-```
+```SQL
 boolean_expression_1 OR boolean_expression_2
 ```
 
@@ -348,7 +357,7 @@ Bảng dưới đây minh họa kết quả của sự kết hợp:
 
 ### Ví dụ:
 
-```
+```SQL
 SELECT    
     customername, 
     country
@@ -361,6 +370,7 @@ WHERE country = 'USA' OR
 
 
 ### Chú ý
+
 - MySQL ngừng kiểm tra khi một trong các biểu thức là đúng
 - Khi sử dụng nhiều toán tử logic trong một biểu thức MySQL luôn ưu tiên các toán tử `AND`
 - Để thay đổi sự ưu tiên ta sử dụng dấu ngặc `(`, `)` bao lấy biểu thức 
@@ -371,13 +381,14 @@ WHERE country = 'USA' OR
 ## IN
 
 ### Chức năng
+
 Toán tử `IN` giúp xác định xem một giá trị cụ thể có nằm trong một tập hợp các giá trị hoặc kết quả trả về bởi một truy vấn con.
 
 
 
 ### Cú pháp
 
-```
+```SQL
 SELECT 
     column1,column2,...
 FROM
@@ -388,7 +399,7 @@ WHERE
 
 ### Ví dụ:
 
-```
+```SQL
 SELECT 
     officeCode, 
     city, 
@@ -402,7 +413,7 @@ WHERE
 
 Sử dụng với các truy vấn con:
 
-```
+```SQL
 SELECT    
     orderNumber, 
     customerNumber, 
@@ -423,6 +434,7 @@ WHERE orderNumber IN
 ```
 
 ### Chú ý
+
 - Có thể kết hợp `NOT` với `IN` cho mục đích ngược lại
 
 
@@ -431,12 +443,13 @@ WHERE orderNumber IN
 ## BETWEEN
 
 ### Chức năng
+
 Toán tử `BETWEEN` cho phép xác định xem một giá trị có nằm trong một phạm vi hay không.
 
 
 ### Cú pháp
 
-```
+```SQL
 expr [NOT] BETWEEN begin_expr AND end_expr;
 ```
 
@@ -444,7 +457,7 @@ expr [NOT] BETWEEN begin_expr AND end_expr;
 
 ### Ví dụ:
 
-```
+```SQL
 SELECT 
     productCode, 
     productName, 
@@ -457,7 +470,7 @@ WHERE
 
 Với thời gian:
 
-```
+```SQL
 SELECT 
    orderNumber,
    requiredDate,
@@ -473,6 +486,7 @@ WHERE
 
 
 ### Chú ý
+
 - Toán tử `BETWEEN` thường được sử dụng trong các mệnh đề `WHERE` của các câu truy vấn `SELECT`, `UPDATE` và `DELETE`
 - Có thể kết hợp `NOT` với `BETWEEN` cho mục đích ngược lại
 
@@ -482,13 +496,14 @@ WHERE
 ## LIKE
 
 ### Chức năng
+
 Toán tử `LIKE` cho phép xác định một chuỗi có chứa một mô hình hay một định dạng cụ thể không.
 
 
 
 ### Cú pháp
 
-```
+```SQL
 expression LIKE pattern ESCAPE escape_character
 ```
 
@@ -499,9 +514,10 @@ MySQL cung cấp hai ký tự đại diện để xây dựng mô hình hay đ�
 
 
 ### Ví dụ:
+
 Với ký tự `%`:
 
-```
+```SQL
 SELECT 
     employeeNumber, 
     lastName, 
@@ -514,7 +530,7 @@ WHERE
 
 Với ký tự `_`:
 
-```
+```SQL
 SELECT 
     employeeNumber, 
     lastName, 
@@ -528,6 +544,7 @@ WHERE
 
 
 ### Chú ý
+
 - Toán tử `LIKE` thường được sử dụng trong các mệnh đề `WHERE` của các câu truy vấn `SELECT`, `UPDATE` và `DELETE`
 - Khi mẫu có chứa các ký tự đặc biệt ta có thể sử dụng `\` trước các ký tự đó. 
 
@@ -537,12 +554,13 @@ WHERE
 ## LIMIT
 
 ### Chức năng
+
 `LIMIT` được sử dụng trong các câu truy vấn `SELECT` để gới hạn kết quả trả về.
 
 
 ### Cú pháp
 
-```
+```SQL
 SELECT 
     select_list
 FROM
@@ -555,14 +573,15 @@ LIMIT [offset,] row_count;
 
 Ngoài ra MySQL cung cấp thêm cu pháp sau để tương thích với `PostgreSQL`:
 
-```
+```SQL
 LIMIT row_count OFFSET offset
 ```
 
 ### Ví dụ:
+
 Để lấy các hàng cao nhất
 
-```
+```SQL
 SELECT 
     customerNumber, 
     customerName, 
@@ -575,7 +594,7 @@ LIMIT 5;
 
 Để lấy các hàng thấp nhất
 
-```
+```SQL
 SELECT 
     customerNumber, 
     customerName, 
@@ -589,13 +608,14 @@ LIMIT 5;
 
 Để phân trang:
 
-```
+```SQL
 ...
 ```
 
 
 
 ### Chú ý
+
 - Có thể bỏ qua `offset` và mặc định nó bằng 0
 - Luôn luôn sử dụng `LIMIT` mệnh đề với `ORDER BY	` để ràng buộc các kết quả theo thứ tự duy nhất.
 
@@ -605,24 +625,25 @@ LIMIT 5;
 ## IS NULL
 
 ### Chức năng
+
 Toán tử `IS NULL` nhằm xác định một giá trị nó `NULL` hay không. 
 
 
 ### Cú pháp
 
-```
+```SQL
 value IS NULL
 ```
 
 Để kiểm tra không `NULL` ta sử dụng cú pháp:
 
-```
+```SQL
 value IS NOT NULL
 ```
 
 ### Ví dụ:
 
-```
+```SQL
 SELECT 
     customerName, 
     country, 
