@@ -3,7 +3,7 @@
 ### Nhận các thông số cần thiết cho việc cài đặt wordpress
 Ta cần có các thông tin để cài đặt cấu hình wordpress như database name, database user, database password và địa chỉ database server:
 
-```
+```bash
 echo Domain Name:
 read -e domain
 
@@ -22,7 +22,7 @@ read -e dbHost
 
 ### Tải source code wordpress và giải nén
 
-```
+```bash
 wget http://wordpress.org/latest.tar.gz
 tar -zxvf latest.tar.gz
 ```
@@ -32,7 +32,7 @@ wp-config.php là file chứa các thông tin cấu hình của worpress như c�
 
 Ta dùng lệnh sed để tìm kiếm và thay thế các cấu hình:
 
-```
+```bash
 cp wordpress/wp-config-sample.php wordpress/wp-config.php
 sed -i "s/database_name_here/$dbName/g" wordpress/wp-config.php
 sed -i "s/username_here/$userName/g" wordpress/wp-config.php
@@ -42,7 +42,7 @@ sed -i "s/localhost/$dbHost/g" wordpress/wp-config.php
 
 ### Di chuyển thư mục wordpress đến thư mục `/var/www/html/`
 
-```
+```bash
 mv wordpress/ /var/www/html/wordpress/
 # Đổi tên theo domain
 mv /var/www/html/wordpress/ /var/www/html/$domain
@@ -51,7 +51,7 @@ mv /var/www/html/wordpress/ /var/www/html/$domain
 ### Tạo database và user database
 Ta cần tọa tài database theo thông tin đã nhận được ở trên và tài khoảng người dùng database để tránh sử dụng tải khoảng `root` sẽ dẫn đến các vấn đề bảo mật không mong muốn.
 
-```
+```bash
 sudo mysql -u root -e "CREATE DATABASE $dbName"
 sudo mysql -u root -e "GRANT ALL PRIVILEGES ON $dbName.* TO $userName@localhost IDENTIFIED BY '$password'"
 
@@ -59,7 +59,7 @@ sudo mysql -u root -e "GRANT ALL PRIVILEGES ON $dbName.* TO $userName@localhost 
 
 ### Cấu hình virtualhost
 
-```
+```bash
 echo "
 <VirtualHost *:80>
     ServerName ${domain}
@@ -79,7 +79,7 @@ echo "
 
 ### Enable site ta vừa tạo và reload lại apache
 
-```
+```bash
 a2ensite $domain
 systemctl reload apache2
 ```
@@ -87,7 +87,7 @@ systemctl reload apache2
 
 ### Test
 
-```
+```bash
 toor@ubuntu_18043:~/_Tmp$ sudo ./wp-install.sh 
 [sudo] password for toor: 
 Domain Name:
