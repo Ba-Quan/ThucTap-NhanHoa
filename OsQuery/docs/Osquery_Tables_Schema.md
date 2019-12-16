@@ -97,6 +97,31 @@
 
 
 
+### Browser extensions
+- [chrome_extensions](Linux.md#chrome_extensions): Thông tin về các tiện ích mở rộng của chrome.
+- [firefox_addons](Linux.md#firefox_addons): Thông tin về các extensions trong firefox, webapps, addons.
+- [opera_extensions](Linux.md#opera_extensions): Thông tin về các tiện ích mở rộng của trình duyệt opera.
+
+
+
+### Osquery
+- [osquery_info](Linux#osquery_info): Thông tin về Osquery
+- [osquery_flags](Linux#osquery_flags): Các cờ (flags) có thể thay đổi cấu hình của osquery
+- [osquery_extensions](Linux#osquery_extensions): Danh sách các phần mở rộng trong osquery.
+- [osquery_packs](Linux#osquery_packs): Thông tin về packs có trong Osquery hiện tại.
+- [osquery_registry](Linux#osquery_registry): Thông tin về registry osquery.
+- [osquery_schedule](Linux#osquery_schedule): Thông tin về các truy vấn được lên lịch trong osquery.
+- [osquery_events](Linux#osquery_events): Thông tin các sự kiện của osquery.
+
+
+
+### Others
+- [file](Linux#file): Thông tin về thuộc tính và metadata của các file.
+- [file_events](Linux#file_events): Thông tin theo dõi sự toàn vẹn của file được chỉ định trong cấu hình.
+- [hash](Linux#hash): Hàm băm của file hệ thống.
+
+
+
 <details>
 <summary>Ví dụ:</summary>
 

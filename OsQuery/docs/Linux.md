@@ -269,6 +269,8 @@ Forensic Carves.
 #### chrome_extensions
 Chrome browser extensions.
 
+Thông tin về các tiện ích mở rộng của chrome.
+
 |   COLUMN    |  TYPE   |                     DESCRIPTION                     |
 |-------------|---------|-----------------------------------------------------|
 |     uid     | bigint  |       The local user that owns the extension        |
@@ -1169,6 +1171,8 @@ This is an example table spec.
 #### file
 Interactive filesystem attributes and metadata.
 
+Thông tin về thuộc tính và metadata của các file.
+
 |     COLUMN      |  TYPE   |                       DESCRIPTION                        |
 |-----------------|---------|----------------------------------------------------------|
 |      path       |  text   |                    Absolute file path                    |
@@ -1198,6 +1202,8 @@ Interactive filesystem attributes and metadata.
 #### file_events(EVENTED TABLE)
 Track time/action changes to files specified in configuration data.
 
+Thông tin theo dõi sự toàn vẹn của file được chỉ định trong cấu hình.
+
 |     COLUMN     |  TYPE   |                       DESCRIPTION                        |
 |----------------|---------|----------------------------------------------------------|
 |  target_path   |  text   |            The path associated with the event            |
@@ -1223,6 +1229,8 @@ Track time/action changes to files specified in configuration data.
 
 #### firefox_addons
 Firefox browser extensions, webapps, and addons.
+
+Thông tin về các extensions trong firefox, webapps, addons.
 
 |   COLUMN    |  TYPE   |                   DESCRIPTION                    |
 |-------------|---------|--------------------------------------------------|
@@ -1337,6 +1345,8 @@ Hardware (PCI/USB/HID) events from UDEV or IOKit.
 
 #### hash
 Filesystem hash data.
+
+Hàm băm của file hệ thống.
 
 |  COLUMN   | TYPE |               DESCRIPTION               |
 |-----------|------|-----------------------------------------|
@@ -2291,6 +2301,8 @@ OEM defined strings retrieved from SMBIOS.
 #### opera_extensions
 Opera browser extensions.
 
+Thông tin về các tiện ích mở rộng của trình duyệt opera.
+
 |   COLUMN    |  TYPE   |                     DESCRIPTION                     |
 |-------------|---------|-----------------------------------------------------|
 |     uid     | bigint  |       The local user that owns the extension        |
@@ -2352,10 +2364,37 @@ Information about the event publishers and subscribers.
 |   refreshes   | integer |            Publisher only: number of runloop restarts             |
 |    active     | integer |         1 if the publisher or subscriber is active else 0         |
 
+<details>
+<summary>Ví dụ:</summary>
+
+```
+osquery> select * from osquery_events;
++---------------------+---------------------+------------+---------------+--------+-----------+--------+
+| name                | publisher           | type       | subscriptions | events | refreshes | active |
++---------------------+---------------------+------------+---------------+--------+-----------+--------+
+| auditeventpublisher | auditeventpublisher | publisher  | 0             | 0      | 0         | 0      |
+| inotify             | inotify             | publisher  | 0             | 0      | 0         | 0      |
+| syslog              | syslog              | publisher  | 0             | 0      | 0         | 0      |
+| udev                | udev                | publisher  | 0             | 0      | 0         | 0      |
+| file_events         | inotify             | subscriber | 0             | 0      | 0         | 0      |
+| hardware_events     | udev                | subscriber | 0             | 0      | 0         | 0      |
+| process_events      | auditeventpublisher | subscriber | 0             | 0      | 0         | 0      |
+| process_file_events | auditeventpublisher | subscriber | 0             | 0      | 0         | 0      |
+| selinux_events      | auditeventpublisher | subscriber | 0             | 0      | 0         | 0      |
+| socket_events       | auditeventpublisher | subscriber | 0             | 0      | 0         | 0      |
+| syslog_events       | syslog              | subscriber | 0             | 0      | 0         | 0      |
+| user_events         | auditeventpublisher | subscriber | 0             | 0      | 0         | 0      |
+| yara_events         | inotify             | subscriber | 0             | 0      | 0         | 0      |
++---------------------+---------------------+------------+---------------+--------+-----------+--------+
+```
+</details>
+
 
 
 #### osquery_extensions
 List of active osquery extensions.
+
+Danh sách các phần mở rộng trong osquery.
 
 |   COLUMN    |  TYPE  |                     DESCRIPTION                      |
 |-------------|--------|------------------------------------------------------|
@@ -2366,10 +2405,25 @@ List of active osquery extensions.
 |    path     |  text  | Path of the extenion's domain socket or library path |
 |    type     |  text  |       SDK extension type: extension or module        |
 
+<details>
+<summary>Ví dụ:</summary>
+
+```
+osquery> select * from osquery_extensions;
++------+------+---------+-------------+-------------------------+------+
+| uuid | name | version | sdk_version | path                    | type |
++------+------+---------+-------------+-------------------------+------+
+| 0    | core | 4.0.2   | 0.0.0       | /root/.osquery/shell.em | core |
++------+------+---------+-------------+-------------------------+------+
+```
+</details>
+
 
 
 #### osquery_flags
 Configurable flags that modify osquery's behavior.
+
+Các cờ (flags) có thể thay đổi cấu hình của osquery
 
 |    COLUMN     |  TYPE   |       DESCRIPTION       |
 |---------------|---------|-------------------------|
@@ -2380,10 +2434,53 @@ Configurable flags that modify osquery's behavior.
 |     value     |  text   |       Flag value        |
 |  shell_only   | integer | Is the flag shell only? |
 
+<details>
+<summary>Ví dụ:</summary>
+
+```
+osquery> select * from osquery_flags;
++-----------------------------------------+--------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------+-----------------------------------------+------------+
+| name                                    | type   | description                                                                                                                                                                                                                                                                                                                                                                                                          | default_value                           | value                                   | shell_only |
++-----------------------------------------+--------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------+-----------------------------------------+------------+
+| alarm_timeout                           | uint64 | Seconds to wait for a graceful shutdown                                                                                                                                                                                                                                                                                                                                                                              | 4                                       | 4                                       | 0          |
+| allow_unsafe                            | bool   | Allow unsafe executable permissions                                                                                                                                                                                                                                                                                                                                                                                  | false                                   | false                                   | 0          |
+| audit_allow_config                      | bool   | Allow the audit publisher to change auditing configuration                                                                                                                                                                                                                                                                                                                                                           | false                                   | false                                   | 0          |
+| audit_allow_fim_events                  | bool   | Allow the audit publisher to install file event monitoring rules                                                                                                                                                                                                                                                                                                                                                     | false                                   | false                                   | 0          |
+| audit_allow_fork_process_events         | bool   | Allow the audit publisher to install process event monitoring rules to capture fork/vfork/clone system calls                                                                                                                                                                                                                                                                                                         | false                                   | false                                   | 0          |
+| audit_allow_process_events              | bool   | Allow the audit publisher to install process event monitoring rules                                                                                                                                                                                                                                                                                                                                                  | true                                    | true                                    | 0          |
+| audit_allow_selinux_events              | bool   | Allow the audit publisher to process audit events                                                                                                                                                                                                                                                                                                                                                                    | false                                   | false                                   | 0          |
+| audit_allow_sockets                     | bool   | Allow the audit publisher to install socket-related rules                                                                                                                                                                                                                                                                                                                                                            | false                                   | false                                   | 0          |
+| tls_client_cert                         | string | Optional path to a TLS client-auth PEM certificate                                                                                                                                                                                                                                                                                                                                                                   |                                         |                                         | 0          |
+| tls_client_key                          | string | Optional path to a TLS client-auth PEM private key                                                                                                                                                                                                                                                                                                                                                                   |                                         |                                         | 0          |
+| tls_dump                                | bool   | Print remote requests and responses                                                                                                                                                                                                                                                                                                                                                                                  | false                                   | false                                   | 0          |
+| tls_enroll_max_attempts                 | uint64 | Number of attempts to retry a TLS enroll request, it used to be the same as [config_tls_max_attempts]                                                                                                                                                                                                                                                                                                                | 3                                       | 3                                       | 0          |
+| tls_enroll_override                     | string | Override the TLS enroll secret key name                                                                                                                                                                                                                                                                                                                                                                              | enroll_secret                           | enroll_secret                           | 0          |
+| tls_hostname                            | string | TLS/HTTPS hostname for Config, Logger, and Enroll plugins                                                                                                                                                                                                                                                                                                                                                            |                                         |                                         | 0          |
+| tls_node_api                            | bool   | Use node key as TLS endpoints                                                                                                                                                                                                                                                                                                                                                                                        | false                                   | false                                   | 0          |
+| tls_secret_always                       | bool   | Include TLS enroll secret in every request                                                                                                                                                                                                                                                                                                                                                                           | false                                   | false                                   | 0          |
+| tls_server_certs                        | string | Optional path to a TLS server PEM certificate(s) bundle                                                                                                                                                                                                                                                                                                                                                              | /usr/share/osquery/certs/certs.pem      | /usr/share/osquery/certs/certs.pem      | 0          |
+| tls_session_reuse                       | bool   | Reuse TLS session sockets                                                                                                                                                                                                                                                                                                                                                                                            | true                                    | true                                    | 0          |
+| tls_session_timeout                     | uint32 | TLS session keep alive timeout in seconds                                                                                                                                                                                                                                                                                                                                                                            | 3600                                    | 3600                                    | 0          |
+| uninstall                               | bool   | Uninstall osqueryd as a service                                                                                                                                                                                                                                                                                                                                                                                      | false                                   | false                                   | 0          |
+| utc                                     | bool   | Convert all UNIX times to UTC                                                                                                                                                                                                                                                                                                                                                                                        | true                                    | true                                    | 0          |
+| value_max                               | int32  | Maximum returned row value size                                                                                                                                                                                                                                                                                                                                                                                      | 512                                     | 512                                     | 0          |
+| verbose                                 | bool   | Enable verbose informational messages                                                                                                                                                                                                                                                                                                                                                                                | false                                   | false                                   | 0          |
+| watchdog_delay                          | uint64 | Initial delay in seconds before watchdog starts                                                                                                                                                                                                                                                                                                                                                                      | 60                                      | 60                                      | 0          |
+| watchdog_level                          | int32  | Performance limit level (0=normal, 1=restrictive, -1=off)                                                                                                                                                                                                                                                                                                                                                            | 0                                       | 0                                       | 0          |
+| watchdog_max_delay                      | uint64 | Max delay in seconds between worker respawns                                                                                                                                                                                                                                                                                                                                                                         | 600                                     | 600                                     | 0          |
+| watchdog_memory_limit                   | uint64 | Override watchdog profile memory limit (e.g., 300, for 300MB)                                                                                                                                                                                                                                                                                                                                                        | 0                                       | 0                                       | 0          |
+| watchdog_utilization_limit              | uint64 | Override watchdog profile CPU utilization limit                                                                                                                                                                                                                                                                                                                                                                      | 0                                       | 0                                       | 0          |
+| worker_threads                          | int32  | Number of work dispatch threads                                                                                                                                                                                                                                                                                                                                                                                      | 4                                       | 2                                       | 0          |
++-----------------------------------------+--------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------+-----------------------------------------+------------+
+```
+</details>
+
 
 
 #### osquery_info
 Top level information about the running version of osquery.
+
+Thông tin về Osquery
 
 |     COLUMN     |  TYPE   |                        DESCRIPTION                        |
 |----------------|---------|-----------------------------------------------------------|
@@ -2400,10 +2497,25 @@ Top level information about the running version of osquery.
 |    watcher     | integer | Process (or thread/handle) ID of optional watcher process |
 | platform_mask  | integer |               The osquery platform bitmask                |
 
+<details>
+<summary>Ví dụ:</summary>
+
+```
+osquery> select * from osquery_info;
++------+--------------------------------------+--------------------------------------+---------+------------------------------------------+--------------+------------+----------------+--------------+------------+---------+
+| pid  | uuid                                 | instance_id                          | version | config_hash                              | config_valid | extensions | build_platform | build_distro | start_time | watcher |
++------+--------------------------------------+--------------------------------------+---------+------------------------------------------+--------------+------------+----------------+--------------+------------+---------+
+| 1890 | b5c44d56-7c47-b40a-cfaa-091a699799e9 | dc69c312-fbdf-4b06-871a-18f26e6cbc6b | 4.0.2   | f649b3315fa11bdfe37ed0b5eb0ce67525f9bdff | 1            | active     | 1              | centos7      | 1576464922 | -1      |
++------+--------------------------------------+--------------------------------------+---------+------------------------------------------+--------------+------------+----------------+--------------+------------+---------+
+```
+</details>
+
 
 
 #### osquery_packs
 Information about the current query packs that are loaded in osquery.
+
+Thông tin về packs có trong Osquery hiện tại.
 
 |        COLUMN        |  TYPE   |                                                  DESCRIPTION                                                  |
 |----------------------|---------|---------------------------------------------------------------------------------------------------------------|
@@ -2415,10 +2527,25 @@ Information about the current query packs that are loaded in osquery.
 | discovery_executions | integer | The number of times that the discovery queries have been executed since the last time the config was reloaded |
 |        active        | integer |         Whether this pack is active (the version, platform and discovery queries match) yes=1, no=0.          |
 
+<details>
+<summary>Ví dụ:</summary>
+
+```
+osquery> select * from osquery_packs;
++------+----------+---------+-------+----------------------+----------------------+--------+
+| name | platform | version | shard | discovery_cache_hits | discovery_executions | active |
++------+----------+---------+-------+----------------------+----------------------+--------+
+| main |          |         | 0     | 1                    | 1                    | 1      |
++------+----------+---------+-------+----------------------+----------------------+--------+
+```
+</details>
+
 
 
 #### osquery_registry
 List the osquery registry plugins.
+
+Thông tin về registry osquery.
 
 |   COLUMN   |  TYPE   |            DESCRIPTION             |
 |------------|---------|------------------------------------|
@@ -2428,10 +2555,105 @@ List the osquery registry plugins.
 |  internal  | integer | 1 If the plugin is internal else 0 |
 |   active   | integer | 1 If this plugin is active else 0  |
 
+<details>
+<summary>Ví dụ:</summary>
+
+```
+osquery> select * from osquery_registry;
++--------------------+--------------------------------+------------+----------+--------+
+| registry           | name                           | owner_uuid | internal | active |
++--------------------+--------------------------------+------------+----------+--------+
+| config             | filesystem                     | 0          | 0        | 1      |
+| config             | tls                            | 0          | 0        | 0      |
+| config             | update                         | 0          | 0        | 0      |
+| config_parser      | auto_constructed_tables        | 0          | 1        | 1      |
+| config_parser      | decorators                     | 0          | 1        | 1      |
+| config_parser      | events                         | 0          | 1        | 1      |
+| config_parser      | feature_vectors                | 0          | 1        | 1      |
+| config_parser      | file_paths                     | 0          | 1        | 1      |
+| config_parser      | kafka_topics                   | 0          | 1        | 1      |
+| config_parser      | logger                         | 0          | 1        | 1      |
+| config_parser      | options                        | 0          | 1        | 1      |
+| config_parser      | prometheus_targets             | 0          | 1        | 1      |
+| config_parser      | views                          | 0          | 1        | 1      |
+| config_parser      | yara                           | 0          | 0        | 1      |
+| database           | ephemeral                      | 0          | 1        | 1      |
+| database           | rocksdb                        | 0          | 1        | 0      |
+| database           | sqlite                         | 0          | 1        | 0      |
+| distributed        | tls                            | 0          | 0        | 1      |
+| enroll             | tls                            | 0          | 0        | 1      |
+| event_publisher    | auditeventpublisher            | 0          | 0        | 0      |
+| event_publisher    | inotify                        | 0          | 0        | 0      |
+| event_publisher    | syslog                         | 0          | 0        | 0      |
+| event_publisher    | udev                           | 0          | 0        | 0      |
+| event_subscriber   | file_events                    | 0          | 0        | 0      |
+| event_subscriber   | hardware_events                | 0          | 0        | 0      |
+| event_subscriber   | process_events                 | 0          | 0        | 0      |
+| event_subscriber   | process_file_events            | 0          | 0        | 0      |
+| event_subscriber   | selinux_events                 | 0          | 0        | 0      |
+| event_subscriber   | socket_events                  | 0          | 0        | 0      |
+| event_subscriber   | syslog_events                  | 0          | 0        | 0      |
+| event_subscriber   | user_events                    | 0          | 0        | 0      |
+| event_subscriber   | yara_events                    | 0          | 0        | 0      |
+| killswitch         | killswitch_filesystem          | 0          | 0        | 1      |
+| killswitch         | tls                            | 0          | 0        | 1      |
+| logger             | aws_firehose                   | 0          | 0        | 0      |
+| logger             | aws_kinesis                    | 0          | 0        | 0      |
+| logger             | filesystem                     | 0          | 0        | 1      |
+| logger             | kafka_producer                 | 0          | 0        | 0      |
+| logger             | stdout                         | 0          | 0        | 0      |
+| logger             | syslog                         | 0          | 0        | 0      |
+| logger             | tls                            | 0          | 0        | 0      |
+| numeric_monitoring | filesystem                     | 0          | 0        | 1      |
+| sql                | sql                            | 0          | 1        | 1      |
+| table              | acpi_tables                    | 0          | 0        | 1      |
+| table              | apt_sources                    | 0          | 0        | 1      |
+| table              | arp_cache                      | 0          | 0        | 1      |
+| table              | atom_packages                  | 0          | 0        | 1      |
+| table              | augeas                         | 0          | 0        | 1      |
+| table              | authorized_keys                | 0          | 0        | 1      |
+| table              | block_devices                  | 0          | 0        | 1      |
+| table              | carbon_black_info              | 0          | 0        | 1      |
+| table              | carves                         | 0          | 0        | 1      |
+| table              | chrome_extensions              | 0          | 0        | 1      |
+| table              | cpu_time                       | 0          | 0        | 1      |
+| table              | cpuid                          | 0          | 0        | 1      |
+| table              | crontab                        | 0          | 0        | 1      |
+| table              | curl                           | 0          | 0        | 1      |
+| table              | curl_certificate               | 0          | 0        | 1      |
+| table              | deb_packages                   | 0          | 0        | 1      |
+| table              | device_file                    | 0          | 0        | 1      |
+| table              | device_hash                    | 0          | 0        | 1      |
+| table              | device_partitions              | 0          | 0        | 1      |
+| table              | disk_encryption                | 0          | 0        | 1      |
+| table              | dns_resolvers                  | 0          | 0        | 1      |
+| table              | docker_container_labels        | 0          | 0        | 1      |
+| table              | docker_container_mounts        | 0          | 0        | 1      |
+| table              | docker_container_networks      | 0          | 0        | 1      |
+| table              | docker_container_ports         | 0          | 0        | 1      |
+| table              | docker_container_processes     | 0          | 0        | 1      |
+| table              | docker_container_stats         | 0          | 0        | 1      |
+| table              | docker_containers              | 0          | 0        | 1      |
+| table              | ulimit_info                    | 0          | 0        | 1      |
+| table              | uptime                         | 0          | 0        | 1      |
+| table              | usb_devices                    | 0          | 0        | 1      |
+| table              | user_events                    | 0          | 0        | 1      |
+| table              | user_groups                    | 0          | 0        | 1      |
+| table              | user_ssh_keys                  | 0          | 0        | 1      |
+| table              | users                          | 0          | 0        | 1      |
+| table              | yara                           | 0          | 0        | 1      |
+| table              | yara_events                    | 0          | 0        | 1      |
+| table              | yum_sources                    | 0          | 0        | 1      |
++--------------------+--------------------------------+------------+----------+--------+
+```
+</details>
+
 
 
 #### osquery_schedule
 Information about the current queries that are scheduled in osquery.
+
+Thông tin về các truy vấn được lên lịch trong osquery.
 
 |     COLUMN     |  TYPE   |                           DESCRIPTION                            |
 |----------------|---------|------------------------------------------------------------------|
@@ -2446,6 +2668,20 @@ Information about the current queries that are scheduled in osquery.
 |   user_time    | bigint  |                 Total user time spent executing                  |
 |  system_time   | bigint  |                Total system time spent executing                 |
 | average_memory | bigint  |           Average private memory left after executing            |
+
+<details>
+<summary>Ví dụ:</summary>
+
+```
+osquery> select * from osquery_schedule;
++-------------+---------------------------------------------------------------+----------+------------+---------------+-------------+-------------+-----------+-----------+-------------+----------------+
+| name        | query                                                         | interval | executions | last_executed | blacklisted | output_size | wall_time | user_time | system_time | average_memory |
++-------------+---------------------------------------------------------------+----------+------------+---------------+-------------+-------------+-----------+-----------+-------------+----------------+
+| system_info | SELECT hostname, cpu_brand, physical_memory FROM system_info; | 3600     | 0          | 0             | 0           |             | 0         | 0         | 0           | 0              |
+| user_info   | SELECT * FROM users;                                          | 10       | 0          | 0             | 0           |             | 0         | 0         | 0           | 0              |
++-------------+---------------------------------------------------------------+----------+------------+---------------+-------------+-------------+-----------+-----------+-------------+----------------+
+```
+</details>
 
 
 
