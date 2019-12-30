@@ -26,6 +26,9 @@
 
 - ORTHER
     + Truy vấn các cronjob đang hoạt động có tồn tại job mà mã độc đã thêm?
+
+
+- CÁC TRUY VẤN PHÁT HIỆN NHỮNG THAY ĐỔI QUAN TRỌNG TRÊN HỆ THỐNG
 */
 
 
@@ -67,7 +70,7 @@ LEFT JOIN processes USING(pid)
 WHERE processes.name = 'cn';
 
 -- Truy vấn process đang lắng nghe trên port ? và có tên cn
-DISTINCT -- Chú ý
+-- DISTINCT -- Chú ý
 SELECT processes.name, processes.pid, processes.path, processes.cmdline, processes.parent, listening_ports.port, etc_protocols.name, listening_ports.address
 FROM listening_ports
 LEFT JOIN processes USING(pid)
@@ -121,3 +124,15 @@ SELECT * FROM file WHERE directory = '/tmp/.tmp/' AND filename = 'linmer';
 SELECT * FROM file WHERE directory = '/tmp/.tmp/' AND filename = 'cn';
 SELECT * FROM file WHERE directory = '/tmp/.tmp/' AND filename = 'wrap';
 SELECT * FROM file WHERE directory = '/tmp/.tmp/' AND filename = 'nur';
+
+
+
+/* CÁC TRUY VẤN PHÁT HIỆN NHỮNG THAY ĐỔI QUAN TRỌNG TRÊN HỆ THỐNG
+*/
+SELECT * FROM users;
+SELECT * FROM last;
+SELECT * FROM yum_sources;
+SELECT * FROM rpm_packages;
+SELECT * FROM load_average;
+SELECT * FROM memory_info;
+SELECT * FROM process_open_sockets;
